@@ -1,0 +1,53 @@
+.product {
+  padding: 1rem;
+}
+
+.image {
+  border-radius: 1rem;
+}
+
+.paragraph {
+  color: var(--purpleHaze);
+}
+
+.priceQuantiy {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  all: unset;
+  cursor: pointer;
+  color: var(--hemocyanin);
+  background-color: var(--sohoLights);
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  display: flex;
+  width: -webkit-fill-available;
+  justify-content: center;
+}
+
+.description,
+.footer {
+  background-color: var(--hemocyanin);
+  padding: 1rem;
+}
+
+.description > p {
+  line-height: 1.5rem;
+}
+
+.footer > p {
+  color: var(--purpleHaze);
+  font-size: 0.6rem;
+  line-height: 1rem;
+}
+
+.specifiations {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}

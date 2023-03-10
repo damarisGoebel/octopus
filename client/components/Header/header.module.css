@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  padding: 1.2rem 1rem;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.figure {
+  margin: 0;
+}
+
+.logo,
+.basket {
+  height: 1.5rem;
+}
