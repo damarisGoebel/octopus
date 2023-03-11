@@ -14,3 +14,13 @@
 .basket {
   height: 1.5rem;
 }
+
+.number {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background-color: var(--sohoLights);
+  color: white;
+  border-radius: 50%;
+  padding: 0.1rem 0.5rem;
+}

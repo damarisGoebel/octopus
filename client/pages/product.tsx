@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./product.module.css";
+import Counter from "../components/Counter/counter";
+import CartContext from "../context/cartcontext";
 
 interface IProduct {
   id: string;
@@ -23,6 +25,9 @@ export default function Product() {
   const [productData, setProductData] = useState<IProduct | undefined>(
     undefined
   );
+  const { cart, setCart } = useContext(CartContext);
+
+
 
   useEffect(() => {
     fetch(
@@ -33,10 +38,13 @@ export default function Product() {
         const fetchedData = data.data.Product;
         if (fetchedData !== undefined) {
           setProductData(fetchedData);
-          console.log(productData);
         }
       });
   }, []);
+
+  const addToCart = () => {
+    setCart(cart + 1);
+  };
   return (
     <React.Fragment>
       {productData && (
@@ -61,9 +69,11 @@ export default function Product() {
                   productData.price.toString().slice(2),
                 ].join("")}
               </h3>
-              <div>Quantity</div>
+              <Counter />
             </div>
-            <button className={styles.button}>Add to cart</button>
+            <button className={styles.button} onClick={addToCart}>
+              Add to cart
+            </button>
           </div>
 
           <div className={styles.description}>

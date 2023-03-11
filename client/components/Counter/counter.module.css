@@ -1,0 +1,44 @@
+.decrement {
+  background-color: var(--plum);
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.increment {
+  background-color: var(--sohoLights);
+  border-radius: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.counter {
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+}
+
+.quantity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.quantityText {
+  color: var(--purpleHaze);
+}
+
+.quantityValue {
+  font-size: 1.5rem;
+}
