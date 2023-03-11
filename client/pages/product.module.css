@@ -52,3 +52,21 @@
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
+
+@media (min-width: 36em) {
+  .productHeader {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .description > p {
+    line-height: 2.5rem;
+  }
+
+  .button {
+    width: unset;
+    padding: 1rem 5rem;
+  }
+}
+

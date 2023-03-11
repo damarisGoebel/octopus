@@ -27,8 +27,6 @@ export default function Product() {
   );
   const { cart, setCart } = useContext(CartContext);
 
-
-
   useEffect(() => {
     fetch(
       "http://localhost:3001/graphql?query=%7B%0A%20%20Product(id%3A%201)%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20power%0A%20%20%20%20description%0A%20%20%20%20price%0A%20%20%20%20quantity%0A%20%20%20%20brand%0A%20%20%20%20weight%0A%20%20%20%20height%0A%20%20%20%20width%0A%20%20%20%20length%0A%20%20%20%20model_code%0A%20%20%20%20colour%0A%20%20%20%20img_url%0A%20%20%7D%0A%7D%0A"
@@ -50,16 +48,20 @@ export default function Product() {
       {productData && (
         <div>
           <div className={styles.product}>
-            <img
-              className={styles.image}
-              src={productData.img_url}
-              alt="Philips Plumen Bulb"
-              width="100%"
-            />
-            <h1>{productData.name}</h1>
-            <p className={styles.paragraph}>
-              {productData.power} // Packet of {productData.quantity}
-            </p>
+            <div className={styles.productHeader}>
+              <img
+                className={styles.image}
+                src={productData.img_url}
+                alt="Philips Plumen Bulb"
+                width="100%"
+              />
+              <div className={styles.productInfo}>
+                <h1>{productData.name}</h1>
+                <p className={styles.paragraph}>
+                  {productData.power} // Packet of {productData.quantity}
+                </p>
+              </div>
+            </div>
             <div className={styles.priceQuantiy}>
               <h3>
                 £{" "}

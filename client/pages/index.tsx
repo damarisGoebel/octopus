@@ -6,7 +6,7 @@ import Product from "./product";
 export default function Home() {
   const [cart, setCart] = useState<number>(0);
   return (
-    <CartContext.Provider value={{cart, setCart}}>
+    <CartContext.Provider value={{ cart, setCart }}>
       <main>
         <div className="home">
           <Header />

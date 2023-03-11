@@ -33,3 +33,17 @@ main {
   height: 100vh;
   margin: 0 auto;
 }
+
+@media (min-width: 36em) {
+  .home {
+    font-size: 160%;
+  }
+}
+
+@media (min-width: 48em) {
+  .home {
+    font-size: 200%;
+    padding: 1rem 10rem;
+    max-width: 64rem;
+  }
+}
