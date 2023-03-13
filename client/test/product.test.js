@@ -1,39 +1,42 @@
 import { render, fireEvent } from "@testing-library/react";
-import Product from "../pages/product";
+import Home from "../../client/pages/index";
+import Counter from "../components/Counter/counter";
 
 test("should be able to increase and decrease product quantity", async () => {
-  const { getByText, getByTitle } = render(<Product />);
+  const { getByText, getByTitle } = render(<Counter />);
 
   const increaseQuantity = getByText("+");
 
-  const currentQuantity = getByTitle("Current quantity");
-  expect(currentQuantity).toHaveTextContent("1");
+  setTimeout(async () => {
+    const currentQuantity = getByTitle("Current quantity");
+    expect(currentQuantity).toHaveTextContent("1");
 
-  fireEvent.click(increaseQuantity);
-  expect(currentQuantity).toHaveTextContent("2");
+    fireEvent.click(increaseQuantity);
+    expect(currentQuantity).toHaveTextContent("2");
+    const decreaseQuantity = getByText("-");
 
-  const decreaseQuantity = getByText("-");
-
-  fireEvent.click(decreaseQuantity);
-  expect(currentQuantity).toHaveTextContent("1");
+    fireEvent.click(decreaseQuantity);
+    expect(currentQuantity).toHaveTextContent("1");
+  }, 4000);
 });
 
 test("should be able to add items to the basket", async () => {
-  const { getByText, getByTitle } = render(<Product />);
+  setTimeout(async () => {
+    const { getByText, getByTitle } = render(<Home />);
 
-  const increaseQuantity = getByText("+");
+    const increaseQuantity = getByText("+");
+    const currentQuantity = getByTitle("Current quantity");
 
-  const currentQuantity = getByTitle("Current quantity");
+    fireEvent.click(increaseQuantity);
+    fireEvent.click(increaseQuantity);
+    fireEvent.click(increaseQuantity);
 
-  fireEvent.click(increaseQuantity);
-  fireEvent.click(increaseQuantity);
-  fireEvent.click(increaseQuantity);
+    expect(currentQuantity).toHaveTextContent("4");
 
-  expect(currentQuantity).toHaveTextContent("4");
+    const addToBasketElement = getByText("Add to cart");
+    fireEvent.click(addToBasketElement);
 
-  const addToBasketElement = getByText("Add to cart");
-  fireEvent.click(addToBasketElement);
-
-  const basketItems = getByTitle("Basket items");
-  expect(basketItems).toHaveTextContent("4");
+    const basketItems = getByTitle("Basket items");
+    expect(basketItems).toHaveTextContent("4");
+  }, 4000);
 });

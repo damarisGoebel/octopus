@@ -14,7 +14,11 @@ const Header = () => {
         />
       </figure>
       <img className={styles.basket} src="/basket.svg" alt="Basket" />
-      {cart > 0 && <span className={styles.number}>{cart}</span>}
+      {cart > 0 && (
+        <span className={styles.number} title="Basket items">
+          {cart}
+        </span>
+      )}
     </header>
   );
 };

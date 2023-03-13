@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./product.module.css";
 import Counter from "../components/Counter/counter";
 import CartContext from "../context/cartcontext";
+import { getProduct } from "../api/product";
 
 interface IProduct {
   id: string;
-
   name: string;
   power: string;
   description: string;
@@ -25,23 +25,24 @@ export default function Product() {
   const [productData, setProductData] = useState<IProduct | undefined>(
     undefined
   );
-  const { cart, setCart } = useContext(CartContext);
+  const { count, setCart } = useContext(CartContext);
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetch(
-      "http://localhost:3001/graphql?query=%7B%0A%20%20Product(id%3A%201)%20%7B%0A%20%20%20%20id%0A%20%20%20%20name%0A%20%20%20%20power%0A%20%20%20%20description%0A%20%20%20%20price%0A%20%20%20%20quantity%0A%20%20%20%20brand%0A%20%20%20%20weight%0A%20%20%20%20height%0A%20%20%20%20width%0A%20%20%20%20length%0A%20%20%20%20model_code%0A%20%20%20%20colour%0A%20%20%20%20img_url%0A%20%20%7D%0A%7D%0A"
-    )
-      .then((res) => res.json())
+    setLoading(true);
+    getProduct()
       .then((data) => {
         const fetchedData = data.data.Product;
         if (fetchedData !== undefined) {
           setProductData(fetchedData);
+          setLoading(false);
         }
-      });
+      })
+      .catch((e) => console.log(e));
   }, []);
 
   const addToCart = () => {
-    setCart(cart + 1);
+    setCart(count);
   };
   return (
     <React.Fragment>
@@ -109,7 +110,7 @@ export default function Product() {
           </div>
         </div>
       )}
-      {!productData && <p>Loading ...</p>}
+      {isLoading && <p>Loading ...</p>}
     </React.Fragment>
   );
 }

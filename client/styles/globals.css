@@ -37,10 +37,11 @@ main {
 @media (min-width: 36em) {
   .home {
     font-size: 160%;
+    padding: 1rem;
   }
 }
 
-@media (min-width: 48em) {
+@media (min-width: 72em) {
   .home {
     font-size: 200%;
     padding: 1rem 10rem;

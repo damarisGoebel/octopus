@@ -1,19 +1,20 @@
-import { useState } from "react";
+import { useContext } from "react";
+import CartContext from "../../context/cartcontext";
 import styles from "./counter.module.css";
 
 const Counter = () => {
-  const [quantity, setQuantity] = useState<number>(1);
+  const { count, setCount } = useContext(CartContext);
 
   const decrement = () => {
-    if (quantity === 0) {
-      setQuantity(0);
+    if (count === 0) {
+      setCount(0);
     } else {
-      setQuantity(quantity - 1);
+      setCount(count - 1);
     }
   };
 
   const increment = () => {
-    setQuantity(quantity + 1);
+    setCount(count + 1);
   };
 
   return (
@@ -22,8 +23,10 @@ const Counter = () => {
         -
       </div>
       <div className={styles.quantity}>
-        <div className={styles.quantityText}>Qtq</div>
-        <div className={styles.quantityValue}>{quantity}</div>
+        <div className={styles.quantityText}>Qty</div>
+        <div className={styles.quantityValue} title="Current quantity">
+          {count}
+        </div>
       </div>
       <div className={styles.increment} onClick={increment}>
         +
